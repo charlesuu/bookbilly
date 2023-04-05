@@ -41,14 +41,26 @@ public class UserController {
 
     @PutMapping("/user")
     public void updateUser(@RequestBody UserUpdateRequest request) {
-        String sql = "UPDATE user SET name = ? WHERE id = ?";
-        jdbcTemplate.update(sql, request.getName(), request.getId());
+        String readSql = "select * from user where id = ?";
+        boolean isUserNotExist = jdbcTemplate.query(readSql, (rs, rowNum) -> 0,request.getId()).isEmpty();
+        if (isUserNotExist) {
+            throw new IllegalArgumentException();
+        }
+
+        String updateSql = "UPDATE user SET name = ? WHERE id = ?";
+        jdbcTemplate.update(updateSql, request.getName(), request.getId());
     }
 
     @DeleteMapping("/user")
     public void updateUser(@RequestParam String name) {
-        String sql = "DELETE FROM user WHERE name  = ?";
-        jdbcTemplate.update(sql, name);
+        String readSql = "select * from user where name = ?";
+        boolean isUserNotExist = jdbcTemplate.query(readSql, (rs, rowNum) -> 0, name).isEmpty();
+        if (isUserNotExist) {
+            throw new IllegalArgumentException();
+        }
+
+        String deleteSql = "DELETE FROM user WHERE name  = ?";
+        jdbcTemplate.update(deleteSql, name);
     }
 }
 
