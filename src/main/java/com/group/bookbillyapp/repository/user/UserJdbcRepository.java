@@ -1,18 +1,17 @@
 package com.group.bookbillyapp.repository.user;
 
-import com.group.bookbillyapp.dto.user.request.UserCreateRequest;
-import com.group.bookbillyapp.dto.user.request.UserUpdateRequest;
 import com.group.bookbillyapp.dto.user.response.UserResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class UserRepository {
+@Repository
+public class UserJdbcRepository {
     //JdbcTemplate jdbcTemplate = new JdbcTemplate(); 걍 일케 하면 뭐가 문제? -> OCP원칙 위반
     JdbcTemplate jdbcTemplate;
 
-    public UserRepository(JdbcTemplate jdbcTemplate) {
+    public UserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
