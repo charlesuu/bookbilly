@@ -1,6 +1,10 @@
 package com.group.bookbillyapp.domain.user;
 
+import com.group.bookbillyapp.domain.user.loanhistory.UserLoanHistory;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,6 +15,9 @@ public class User {
     @Column(nullable = false, length = 20)
     private String name;
     private Integer age;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
     protected User() {
     }
@@ -37,5 +44,9 @@ public class User {
 
     public void updateName(String name) {
         this.name = name;
+    }
+
+    public void loanBook(String bookName) {
+        this.userLoanHistories.add(new UserLoanHistory(this, bookName));
     }
 }
