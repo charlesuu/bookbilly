@@ -6,20 +6,16 @@
     <div class="col-md-4">
         <form>
             <div class="form-group">
-                <label for="title">글 번호</label>
-                <input type="text" class="form-control" id="id" value="{{post.id}}" readonly>
+                <label for="id">유저 번호</label>
+                <input type="text" class="form-control" id="id" value="{{user.id}}" readonly>
             </div>
             <div class="form-group">
-                <label for="title">제목</label>
-                <input type="text" class="form-control" id="title" value="{{post.title}}">
+                <label for="name">이름</label>
+                <input type="text" class="form-control" id="name" value="{{user.name}}">
             </div>
             <div class="form-group">
-                <label for="author"> 작성자 </label>
-                <input type="text" class="form-control" id="author" value="{{post.author}}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="content"> 내용 </label>
-                <textarea class="form-control" id="content">{{post.content}}</textarea>
+                <label for="age"> 나이 </label>
+                <input type="text" class="form-control" id="age" value="{{user.age}}" readonly>
             </div>
         </form>
         <a href="/" role="button" class="btn btn-secondary">취소</a>

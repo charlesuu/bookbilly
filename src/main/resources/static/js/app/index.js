@@ -15,40 +15,41 @@ var main = {
     },
     save : function () {
         var data = {
-            title: $('#title').val(),
-            author: $('#author').val(),
-            content: $('#content').val()
+            name: $('#name').val(),
+            age: $('#age').val(),
         };
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/posts',
+            url: '/user',
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
-            alert('글이 등록되었습니다.');
+            alert('사용자가 등록되었습니다.');
+            console.log("등록 잘 됨");
             window.location.href = '/';
         }).fail(function (error) {
+            console.log("등록 에러 뜸");
             alert(JSON.stringify(error));
         });
     },
     update : function () {
         var data = {
-            title: $('#title').val(),
-            content: $('#content').val()
+            id: $('#id').val(),
+            name: $('#name').val()
         };
 
         var id = $('#id').val();
 
         $.ajax({
             type: 'PUT',
-            url: '/api/v1/posts/'+id,
-            dataType: 'json',
+            url: '/user',
+            //dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
-            alert('글이 수정되었습니다.');
+            alert('이름이 수정되었습니다.');
             window.location.href = '/';
         }).fail(function (error) {
             alert(JSON.stringify(error));

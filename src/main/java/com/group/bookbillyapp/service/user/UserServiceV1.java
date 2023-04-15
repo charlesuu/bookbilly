@@ -1,5 +1,6 @@
 package com.group.bookbillyapp.service.user;
 
+import com.group.bookbillyapp.domain.user.UserRepository;
 import com.group.bookbillyapp.dto.user.request.UserCreateRequest;
 import com.group.bookbillyapp.dto.user.request.UserUpdateRequest;
 import com.group.bookbillyapp.dto.user.response.UserResponse;
@@ -18,8 +19,9 @@ public class UserServiceV1 implements UserService {
     }
 
     @Transactional
-    public void saveUser(UserCreateRequest request) {
+    public Long saveUser(UserCreateRequest request) {
         userJdbcRepository.saveUser(request.getName(), request.getAge());
+        return 0L;//serviceV1쓰게 되면 생성된 유저 아이디 반환하도록 변경할 것.(안 해도 기능에는 문제 없음)
     }
 
     @Transactional(readOnly = true)

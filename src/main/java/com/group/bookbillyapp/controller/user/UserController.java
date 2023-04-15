@@ -18,8 +18,8 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public void saveUser(@RequestBody UserCreateRequest request) {
-        userService.saveUser(request);
+    public Long saveUser(@RequestBody UserCreateRequest request) {
+        return userService.saveUser(request);
     }
 
     @GetMapping("/user")

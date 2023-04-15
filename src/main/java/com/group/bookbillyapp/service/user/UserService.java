@@ -7,7 +7,7 @@ import com.group.bookbillyapp.dto.user.response.UserResponse;
 import java.util.List;
 
 public interface UserService {
-    public void saveUser(UserCreateRequest request);
+    public Long saveUser(UserCreateRequest request);
 
     public List<UserResponse> getUsers();
 

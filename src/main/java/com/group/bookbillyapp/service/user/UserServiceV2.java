@@ -22,8 +22,8 @@ public class UserServiceV2 implements UserService {
     }
 
     @Transactional
-    public void saveUser(UserCreateRequest request) {
-        userRepository.save(new User(request.getName(), request.getAge()));
+    public Long saveUser(UserCreateRequest request) {
+        return userRepository.save(new User(request.getName(), request.getAge())).getId();
     }
 
     @Transactional(readOnly = true)
