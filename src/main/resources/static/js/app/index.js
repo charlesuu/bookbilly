@@ -27,10 +27,8 @@ var main = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('사용자가 등록되었습니다.');
-            console.log("등록 잘 됨");
             window.location.href = '/';
         }).fail(function (error) {
-            console.log("등록 에러 뜸");
             alert(JSON.stringify(error));
         });
     },
@@ -60,8 +58,7 @@ var main = {
 
         $.ajax({
             type: 'DELETE',
-            url: '/api/v1/posts/'+id,
-            dataType: 'json',
+            url: '/user/'+id,
             contentType:'application/json; charset=utf-8'
         }).done(function() {
             alert('글이 삭제되었습니다.');

@@ -39,11 +39,12 @@ public class UserServiceV1 implements UserService {
     }
 
     @Transactional
-    public void deleteUser(String name) {
-        if (userJdbcRepository.isUserNotExist(name)) {
+    @Override
+    public void deleteUser(Long id) {
+        if (userJdbcRepository.isUserNotExist(id)) {
             throw new IllegalArgumentException();
         }
 
-        userJdbcRepository.deleteUserByName(name);
+        userJdbcRepository.deleteUserById(id);
     }
 }

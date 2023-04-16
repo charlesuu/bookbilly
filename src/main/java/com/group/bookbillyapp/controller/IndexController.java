@@ -33,7 +33,23 @@ public class IndexController {
     }
 
     @GetMapping("/user/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model) {
+    public String userUpdate(@PathVariable Long id, Model model) {
+        User user = userRepository.findById(id)
+                .orElseThrow(IllegalArgumentException::new);
+
+        model.addAttribute("user", new UserResponse(id, user));
+
+        return "user-update";
+    }
+
+
+    @GetMapping("/book/save")
+    public String bookSave() {
+        return "book-save";
+    }
+
+    @GetMapping("/book/loan/{id}")
+    public String loanBood(@PathVariable Long id, Model model) {
         User user = userRepository.findById(id)
                 .orElseThrow(IllegalArgumentException::new);
 

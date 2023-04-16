@@ -44,8 +44,8 @@ public class UserServiceV2 implements UserService {
     }
 
     @Transactional
-    public void deleteUser(String name) {
-        User user = userRepository.findByName(name)
+    public void deleteUser(Long id) {
+        User user = userRepository.findById(id)
                 .orElseThrow(IllegalArgumentException::new);
 
         userRepository.delete(user);

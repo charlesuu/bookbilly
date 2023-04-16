@@ -29,5 +29,5 @@ public class UserResponse {
 
     public Integer getAge() {
         return age;
-    }
+    }//json으로 반환하기 위함임.
 }
