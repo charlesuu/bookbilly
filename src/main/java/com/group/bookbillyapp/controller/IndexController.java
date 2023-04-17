@@ -49,13 +49,13 @@ public class IndexController {
     }
 
     @GetMapping("/book/loan/{id}")
-    public String loanBood(@PathVariable Long id, Model model) {
+    public String bookLoan(@PathVariable Long id, Model model) {
         User user = userRepository.findById(id)
                 .orElseThrow(IllegalArgumentException::new);
 
         model.addAttribute("user", new UserResponse(id, user));
 
-        return "user-update";
+        return "book-loan";
     }
 
 }
